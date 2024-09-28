@@ -7,6 +7,7 @@ export class FlowersController {
 
   @Get()
   findAll() {
+    console.log('flowers findAll controller');
     return this.flowersService.findAll();
   }
 }

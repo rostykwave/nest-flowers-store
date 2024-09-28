@@ -1,9 +1,17 @@
-import { Controller, Get, Query, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Query,
+  UseGuards,
+  UseInterceptors,
+} from '@nestjs/common';
 import { FlowersService } from './flowers.service';
 import { ParseIntPipe } from 'src/conception/parseInt.pipe';
 import { AuthGuard } from 'src/conception/auth.guard';
+import { LoggingInterceptor } from 'src/conception/logging.interceptor';
 
 @Controller('flowers')
+@UseInterceptors(LoggingInterceptor)
 export class FlowersController {
   constructor(private readonly flowersService: FlowersService) {}
 
